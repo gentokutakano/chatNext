@@ -1,6 +1,5 @@
 import Express from 'express'
 import usersController from './usersController'
-import postsController from './postsController'
 import { Handler } from '../core/handler'
 
 const router = Express.Router()
@@ -16,6 +15,5 @@ router.get('/gen', (req, res, next) => {
 })
 
 router.use('/users', usersController)
-router.use('/posts', postsController)
 
 export default router
