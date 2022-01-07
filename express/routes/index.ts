@@ -15,7 +15,6 @@ router.get('/gen', (req, res, next) => {
   return handler.json<number>(1234567);
 })
 
-
 router.use('/users', usersController)
 router.use('/posts', postsController)
 
