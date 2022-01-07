@@ -8,6 +8,7 @@ import mongoose from 'mongoose'
 mongoose.connect('mongodb://localhost:27017/userdb', {
   // useNewUrlParser: true,
   // useUnifiedTopology: true,
+  ///TODO mongoへの接続情報
 })
 
 mongoose.Promise = global.Promise
