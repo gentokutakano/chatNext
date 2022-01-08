@@ -30,6 +30,7 @@ services:
       - ./configdb:/data/configdb
 
   mongo-express:
+    container_name: mongo-express
     image: mongo-express:0.54
     ports:
       - 8081:8081
