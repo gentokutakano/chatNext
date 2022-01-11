@@ -1,40 +1,19 @@
 import mongoose, { Schema, Document } from 'mongoose'
 
-type Sex = '男' | '女'
-
 export interface UserDoc extends Document {
-  firstName: String
-  lastName: String
-  email: String
+  name: String
   age: Number
-  sex: Sex
 }
 
 const userSchema: Schema = new Schema(
   {
-    firstName: {
+    name: {
       type: String,
       trim: true,
       required: true,
-    },
-    lastName: {
-      type: String,
-      trim: true,
-      required: true,
-    },
-    email: {
-      type: String,
-      required: true,
-      unique: true,
     },
     age: {
       type: Number,
-      required: true,
-    },
-    sex: {
-      type: String,
-      required: true,
-      enum: ['男', '女']
     },
   },
   {
@@ -42,8 +21,8 @@ const userSchema: Schema = new Schema(
   }
 )
 
-// userSchema.virtual('fullName').get(function(this: User) {
-//   return `${this.firstName} ${this.lastName}`
-// })
+userSchema.virtual('name').get(function(this: UserDoc) {
+  return `${this.name}です。 ${this.age}です。`
+})
 
-// export default mongoose.model<User>('User', userSchema)
+export default mongoose.model<UserDoc>('User', userSchema)

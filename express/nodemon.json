@@ -1,5 +1,5 @@
 {
   "watch": ["express/**/*"],
   "ext": "ts",
-  "exec": "ts-node ./index.ts"
+  "exec": "ts-node ./main.ts"
 }
