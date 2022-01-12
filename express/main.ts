@@ -4,10 +4,13 @@ import cors from 'cors'
 import router from './routes/index'
 import bodyParser from 'body-parser'
 import mongoose from 'mongoose'
+import dotenv from 'dotenv'
+
+dotenv.config({ path: __dirname + '/.env' })
 
 mongoose.connect('mongodb://mongo:27017/mongoose_api', {
-  user: "gengoose",
-  pass: "gentoku2424"
+  user: process.env.MONGOOSE_USERNAME,
+  pass: process.env.MONGOOSE_PASSWORD
 });
 const db = mongoose.connection;
 ///接続で発生するイベントを監視
