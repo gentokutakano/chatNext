@@ -6,9 +6,8 @@ import bodyParser from 'body-parser'
 import mongoose from 'mongoose'
 
 mongoose.connect('mongodb://mongo:27017/mongoose_api', {
-  // dbName: "usrdb",
-  // user: "gentokutakano",
-  // pass: "gentoku2424"
+  user: "gengoose",
+  pass: "gentoku2424"
 });
 const db = mongoose.connection;
 ///接続で発生するイベントを監視
