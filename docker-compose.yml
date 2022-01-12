@@ -18,7 +18,7 @@ services:
       - mongo
 
   mongo:
-    image: mongo:4.4.5
+    image: mongo
     container_name: mongo
     environment:
       MONGO_INITDB_ROOT_USERNAME: ${MONGODB_USERNAME}
