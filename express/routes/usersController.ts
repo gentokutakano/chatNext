@@ -37,4 +37,11 @@ router.delete('/:userID', async (req, res) => {
   res.send(user)
 })
 
+router.patch('/:userID', async (req, res) => {
+  console.log(req.body.age)
+  const user = await User.updateOne({ _id: req.params.userID },
+    { $set: { name: req.body.name, age: req.body.age } })
+  res.send(user)
+})
+
 export default router

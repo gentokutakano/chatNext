@@ -17,3 +17,13 @@ Content-Type: application/json
 ###
 
 DELETE http://localhost:3000/users/61de8f04aec214ef66299ba2
+
+###
+
+PATCH http://localhost:3000/users/61df6bd74cc3cc00081344ea
+Content-Type:  application/json
+
+{
+  "name": "nika",
+  "age": 88
+}
