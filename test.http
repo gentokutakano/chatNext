@@ -2,7 +2,7 @@ GET http://localhost:3000/users
 
 ###
 
-GET http://localhost:3000/users/61dfae7efd2e57960d0249f
+GET http://localhost:3000/users/61dfae7efd2e57960d0
 
 ###
 
@@ -13,3 +13,7 @@ Content-Type: application/json
   "name": "Yuka",
   "age": 4
 }
+
+###
+
+DELETE http://localhost:3000/users/61de8f04aec214ef66299ba2

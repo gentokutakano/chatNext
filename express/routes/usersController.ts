@@ -13,10 +13,14 @@ router.get('/', async(req, res, next) => {
 })
 
 router.get('/:userID', (req, res) => {
-  User.findById(req.params.userID, (err: Error, user: UserDoc) => {
-    if (err) console.log(err)
-    res.send(user)
-  })
+  try {
+    User.findById(req.params.userID, (err: Error, user: UserDoc) => {
+      if (err) res.status(404).json("ユーザは存在しません")
+      res.send(user)
+    })
+  } catch (err) {
+    res.status(500).json({err})
+  }
 })
 
 router.post('/', async (req, res) => {
@@ -26,6 +30,11 @@ router.post('/', async (req, res) => {
   })
   const savedUser = await user.save();
   res.json(savedUser)
+})
+
+router.delete('/:userID', async (req, res) => {
+  const user = await User.remove({ _id: req.params.userID })
+  res.send(user)
 })
 
 export default router
