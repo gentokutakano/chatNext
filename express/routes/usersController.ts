@@ -1,17 +1,31 @@
-import { Router } from 'express'
-import userModel from '../models/userModel'
+import express, { Router } from 'express'
+import { UserValidProperty } from '../constants/api_value'
+import User, { UserDoc } from '../models/userModel'
 
 const router = Router()
+///送られてるデータを取得するためexpress.json()を追加
+router.use(express.json());
 
 router.get('/', async(req, res, next) => {
-//   userModel.find({}).then((users) => {//find({})で全てのデータを取得
-//   res.send(users)//取得した全てのデータを返す
-// }).catch((e) => {
-//   res.status(500).send()//取得失敗したら、HTTPステータス500を返す
-// })
-  const users = await userModel.find({})
+  const users = await User.find({})
   res.json(users)
   console.log('connect to mongoose!!')
+})
+
+router.get('/:userID', (req, res) => {
+  User.findById(req.params.userID, (err: Error, user: UserDoc) => {
+    if (err) console.log(err)
+    res.send(user)
+  })
+})
+
+router.post('/', async (req, res) => {
+  const user = new User({
+    name: req.body.name,
+    age: req.body.age
+  })
+  const savedUser = await user.save();
+  res.json(savedUser)
 })
 
 export default router

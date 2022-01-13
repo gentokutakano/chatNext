@@ -7,7 +7,6 @@ import mongoose from 'mongoose'
 import dotenv from 'dotenv'
 
 dotenv.config({ path: __dirname + '/.env' })
-
 mongoose.connect('mongodb://mongo:27017/mongoose_api', {
   user: process.env.MONGOOSE_USERNAME,
   pass: process.env.MONGOOSE_PASSWORD
