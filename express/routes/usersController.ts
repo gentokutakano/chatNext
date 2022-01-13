@@ -1,6 +1,6 @@
 import express, { Router } from 'express'
 import { UserValidProperty } from '../constants/api_value'
-import User, { UserDoc } from '../models/userModel'
+import User, { UserDoc } from '../models/User'
 
 const router = Router()
 ///送られてるデータを取得するためexpress.json()を追加
@@ -9,7 +9,6 @@ router.use(express.json());
 router.get('/', async(req, res, next) => {
   const users = await User.find({})
   res.json(users)
-  console.log('connect to mongoose!!')
 })
 
 router.get('/:userID', (req, res) => {
