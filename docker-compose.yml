@@ -1,5 +1,18 @@
 version: "3"
 services:
+  front:
+    container_name: front
+    build: ./docker/next
+      # context: next/app
+      # dockerfile: ./docker/next
+    volumes:
+      - ./next/app:/app
+    ports:
+      - 8080:8080
+    # depends_on:
+    #   - server
+    # command: yarn dev
+
   server:
     container_name: server
     build: ./docker/express

@@ -37,4 +37,3 @@ docker-compose stop
 
 - Node.js: v12.13.1
 - Express: v4.16.1
-- MySQL: v8.0
