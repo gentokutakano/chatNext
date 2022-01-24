@@ -21,7 +21,6 @@ mongoose.Promise = global.Promise
 const app = express()
 //セキュリティ的に堅牢化するライブラリ
 app.use(helmet())
-
 app.use(cors())
 
 app.use(bodyParser.urlencoded({ extended: true }))
@@ -33,3 +32,4 @@ app.use('/', router)
 
 app.listen(port)
 console.log('listen on port ' + port)
+

@@ -1,14 +1,16 @@
 import express, { Router } from 'express'
 import { UserValidProperty } from '../constants/api_value'
 import User, { UserDoc } from '../models/User'
+import { GetUsers } from './users/get_users';
 
 const router = Router()
 ///送られてるデータを取得するためexpress.json()を追加
 router.use(express.json());
 
-router.get('/', async(req, res, next) => {
-  const users = await User.find({})
-  res.json(users)
+router.get('/', async (req, res, next) => {
+  // const users = await User.find({})
+  // res.json(users)
+  new GetUsers(req, res).main().catch(next)
 })
 
 router.get('/:userID', (req, res) => {

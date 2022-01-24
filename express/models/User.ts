@@ -6,6 +6,10 @@ export interface UserDoc extends Document {
 
 const userSchema: Schema = new Schema(
   {
+    _id: {
+      type: String,
+      required: true,
+    },
     name: {
       type: String,
       trim: true,
