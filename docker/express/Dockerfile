@@ -1,4 +1,4 @@
-FROM node:12.13-alpine
+FROM node:15
 
 RUN yarn global add express-generator mongoose
 

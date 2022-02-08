@@ -3,56 +3,57 @@ services:
   front:
     container_name: front
     build: ./docker/next
-      # context: next/app
-      # dockerfile: ./docker/next
+      # context: .
+      # dockerfile:
     volumes:
-      - ./next/app:/app
+      # - ./next/app:/app
+      - ./:/usr/src/app
     ports:
       - 8080:8080
     # depends_on:
     #   - server
-    # command: yarn dev
+    command: sh -c "cd chat-next && npm run dev"
 
-  server:
-    container_name: server
-    build: ./docker/express
-    ports:
-      - 3000:3000
-    volumes:
-      - ./express:/express
-    tty: true
-    environment:
-      CHOKIDAR_USEPOLLING: 1
-      TZ: Asia/Tokyo
-    command: yarn start
-    networks:
-      - default
-    depends_on:
-      - mongo
+#   server:
+#     container_name: server
+#     build: ./docker/express
+#     ports:
+#       - 3000:3000
+#     volumes:
+#       - ./express:/express
+#     tty: true
+#     environment:
+#       CHOKIDAR_USEPOLLING: 1
+#       TZ: Asia/Tokyo
+#     command: yarn start
+#     networks:
+#       - default
+#     depends_on:
+#       - mongo
 
-  mongo:
-    image: mongo
-    container_name: mongo
-    environment:
-      MONGO_INITDB_ROOT_USERNAME: ${MONGODB_USERNAME}
-      MONGO_INITDB_ROOT_PASSWORD: ${MONGODB_PASSWORD}
-    ports:
-      - 27017:27017
-    volumes:
-      - ./db:/data/db
-      - ./configdb:/data/configdb
+#   mongo:
+#     image: mongo
+#     container_name: mongo
+#     environment:
+#       MONGO_INITDB_ROOT_USERNAME: ${MONGODB_USERNAME}
+#       MONGO_INITDB_ROOT_PASSWORD: ${MONGODB_PASSWORD}
+#     ports:
+#       - 27017:27017
+#     volumes:
+#       - ./db:/data/db
+#       - ./configdb:/data/configdb
 
-  mongo-express:
-    container_name: mongo-express
-    image: mongo-express:0.54
-    ports:
-      - 8081:8081
-    environment:
-      ME_CONFIG_MONGODB_ADMINUSERNAME: ${MONGODB_USERNAME}
-      ME_CONFIG_MONGODB_ADMINPASSWORD: ${MONGODB_PASSWORD}
+#   mongo-express:
+#     container_name: mongo-express
+#     image: mongo-express:0.54
+#     ports:
+#       - 8081:8081
+#     environment:
+#       ME_CONFIG_MONGODB_ADMINUSERNAME: ${MONGODB_USERNAME}
+#       ME_CONFIG_MONGODB_ADMINPASSWORD: ${MONGODB_PASSWORD}
 
-networks:
-  default:
+# networks:
+#   default:
 
-volumes:
-  express_data:
+# volumes:
+#   express_data:

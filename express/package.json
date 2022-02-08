@@ -11,6 +11,7 @@
   "dependencies": {
     "axios": "^0.20.0",
     "cors": "^2.8.5",
+    "create-next-app": "^12.0.8",
     "dayjs": "^1.9.8",
     "express": "^4.17.1",
     "helmet": "^4.1.0",
