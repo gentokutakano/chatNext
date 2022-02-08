@@ -1,13 +1,13 @@
 FROM node:15
 
-RUN yarn global add create-next-app
+# ENV HOST 0.0.0.0
 
 # WORKDIR /next
 
-ENV HOST 0.0.0.0
-
-WORKDIR /next
+# ADD . /app
 
 # RUN yarn install
 
-EXPOSE 8080
+# EXPOSE 8080
+
+WORKDIR /usr/src/app
